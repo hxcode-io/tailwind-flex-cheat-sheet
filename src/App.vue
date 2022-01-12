@@ -1,49 +1,54 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import PropertyBox from './components/PropertyBox.vue'
+import {PropertyBoxData} from './models/models'
+import PropertyBox from "./components/PropertyBox.vue";
 
-const flexDirection = {
+const flexDirection:PropertyBoxData = {
+  type: "container",
   title: "Direction",
   items: [
-    { tailwind: "flex-row", css: "flex-direction: row" },
-    { tailwind: "flex-row-reverse", css: "flex-direction: row-reverse" },
-    { tailwind: "flex-col", css: "flex-direction: column" },
-    { tailwind: "flex-col-reverse", css: "flex-direction: column-reverse" },
+    { tailwind: "flex-row", css: "flex-direction: row", classContainer: "flex-row", classItems: "" },
+    { tailwind: "flex-row-reverse", css: "flex-direction: row-reverse", classContainer: "flex-row-reverse", classItems: "" },
+    { tailwind: "flex-col", css: "flex-direction: column", classContainer: "flex-col", classItems: "" },
+    { tailwind: "flex-col-reverse", css: "flex-direction: column-reverse", classContainer: "flex-col-reverse", classItems: "" },
+  ]
+}
+const flexOrder:PropertyBoxData = {
+  type: "items",
+  title: "Order",
+  items: [
+    { tailwind: "flex-row", css: "flex-direction: row", classContainer: "flex-row", classItems: "" },
+    { tailwind: "flex-row-reverse", css: "flex-direction: row-reverse", classContainer: "flex-row", classItems: "" },
+    { tailwind: "flex-col", css: "flex-direction: column", classContainer: "flex-row", classItems: "" },
+    { tailwind: "flex-col-reverse", css: "flex-direction: column-reverse", classContainer: "flex-row", classItems: "" },
   ]
 }
 
 </script>
 
 <template>
-  <div class="container mx-auto mt-14">
+  <div class="m-14">
     <h1 class="text-2xl font-bold">
       Tailwind v3 Flex Properties
     </h1>
     <div class="grid grid-cols-2 gap-x-24 mt-10">
       <div>
         <h2 class="font-bold">Container</h2>
-<!--        <property-box property="display" type="container" -->
-<!--            :items="['flex']"-->
-<!--        >-->
-<!--        </property-box>-->
-        <property-box :data="flexDirection" type="container" />
-        <property-box :data="flexDirection" type="container" />
-<!--        <property-box property="flex-wrap" type="container"-->
-<!--            :items="['flex-wrap','flex-wrap-reverse','flex-nowrap']">-->
-<!--        </property-box>-->
+        <div class="grid grid-cols-2 gap-x-12">
+          <property-box :data="flexDirection" />
+          <property-box :data="flexDirection" />
+          <property-box :data="flexDirection" />
+          <property-box :data="flexDirection" />
+          <property-box :data="flexDirection" />
+        </div>
       </div>
       <div>
         <h2 class="font-bold">Items</h2>
-<!--        <property-box property="order" type="items"-->
-<!--            :items="['order1 - order12','order-none','order-first','order-last']">-->
-<!--        </property-box>-->
-<!--        <property-box property="flex-grow" type="items"-->
-<!--            :items="['grow','grow-0']">-->
-<!--        </property-box>-->
-<!--        <property-box property="flex-shrink" type="items"-->
-<!--            :items="['shrink','shrink-0']">-->
-<!--        </property-box>-->
+        <div class="grid grid-cols-2 gap-x-12">
+          <property-box :data="flexOrder" />
+          <property-box :data="flexOrder" />
+        </div>
       </div>
     </div>
     <div class="mt-20">
