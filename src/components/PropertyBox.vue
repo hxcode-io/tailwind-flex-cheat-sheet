@@ -1,12 +1,23 @@
 <script setup lang="ts">
   import {ref} from "vue";
-  import {PropertyBoxData} from "../models/models";
+  import {FlexItem, PropertyBoxData} from "../models/models";
 
   defineProps<{
     data: PropertyBoxData
   }>()
 
   const containerClass = ref("flex-row");
+  const itemClass = ref("");
+
+  function setShowboxClasses(item: FlexItem) {
+    containerClass.value = item.classContainer;
+    itemClass.value = item.classItems;
+  }
+
+  function clearShowboxClasses() {
+    containerClass.value = "";
+    itemClass.value = "";
+  }
 
   // Idea:
   // Animation with: https://codepen.io/osublake/pen/dMLQJr
@@ -17,16 +28,16 @@
   <div class="property-box" :class="{ 'flex-container' : data.type === 'container', 'flex-items': data.type === 'items'}">
     <div class="title">{{ data.title }}</div>
     <div class="showbox" :class="containerClass">
-      <div class="item"><span>1</span></div>
-      <div class="item"><span>2</span></div>
-      <div class="item"><span>3</span></div>
+      <div class="item" :class="itemClass"><span>1</span></div>
+      <div class="item" :class="itemClass"><span>2</span></div>
+      <div class="item" :class="itemClass"><span>3</span></div>
     </div>
     <ul class="tailwind-list">
       <li class="flex header">
         <div class="w-1/2">Tailwind Class</div>
         <div class="w-1/2">CSS Property</div>
       </li>
-      <li v-for="item in data.items" :key="item" class="flex data" @mouseenter="containerClass = item.classContainer" @mouseleave="containerClass = ''">
+      <li v-for="item in data.items" :key="item" class="flex data" @mouseenter="setShowboxClasses(item)" @mouseleave="clearShowboxClasses">
         <div class="w-1/2 tailwindColor">{{ item.tailwind }}</div>
         <div class="w-1/2 cssColor">{{ item.css }}</div>
       </li>
@@ -53,8 +64,8 @@
     height: 100px;
   }
   .showbox .item {
-    @apply h-full bg-green-500 text-xs rounded shadow flex justify-center items-center;
-    width: 40px;
+    @apply bg-green-500 text-xs rounded shadow flex justify-center items-center;
+    /*width: 40px;*/
   }
   .showbox .item > span {
     @apply text-white;

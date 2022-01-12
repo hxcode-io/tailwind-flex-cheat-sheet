@@ -8,10 +8,19 @@ const flexDirection:PropertyBoxData = {
   type: "container",
   title: "Direction",
   items: [
-    { tailwind: "flex-row", css: "flex-direction: row", classContainer: "flex-row", classItems: "" },
-    { tailwind: "flex-row-reverse", css: "flex-direction: row-reverse", classContainer: "flex-row-reverse", classItems: "" },
-    { tailwind: "flex-col", css: "flex-direction: column", classContainer: "flex-col", classItems: "" },
-    { tailwind: "flex-col-reverse", css: "flex-direction: column-reverse", classContainer: "flex-col-reverse", classItems: "" },
+    { tailwind: "flex-row", css: "flex-direction: row", classContainer: "flex-row", classItems: "w-1/5" },
+    { tailwind: "flex-row-reverse", css: "flex-direction: row-reverse", classContainer: "flex-row-reverse", classItems: "w-1/5" },
+    { tailwind: "flex-col", css: "flex-direction: column", classContainer: "flex-col", classItems: "w-1/5" },
+    { tailwind: "flex-col-reverse", css: "flex-direction: column-reverse", classContainer: "flex-col-reverse", classItems: "w-1/5" },
+  ]
+}
+const flexWrap:PropertyBoxData = {
+  type: "container",
+  title: "Wrap",
+  items: [
+    { tailwind: "flex-wrap", css: "flex-wrap: wrap;", classContainer: "flex-wrap", classItems: "w-2/5 h-1/2" },
+    { tailwind: "flex-wrap-reverse", css: "flex-wrap: wrap-reverse;", classContainer: "flex-wrap-reverse", classItems: "w-2/5 h-1/2" },
+    { tailwind: "flex-nowrap", css: "flex-wrap: nowrap;", classContainer: "flex-nowrap", classItems: "w-2/5 h-1/2" }
   ]
 }
 const flexOrder:PropertyBoxData = {
@@ -37,7 +46,7 @@ const flexOrder:PropertyBoxData = {
         <h2 class="font-bold">Container</h2>
         <div class="grid grid-cols-2 gap-x-12">
           <property-box :data="flexDirection" />
-          <property-box :data="flexDirection" />
+          <property-box :data="flexWrap" />
           <property-box :data="flexDirection" />
           <property-box :data="flexDirection" />
           <property-box :data="flexDirection" />
