@@ -1,12 +1,14 @@
 <script setup lang="ts">
-  import {ref} from "vue";
+import {onMounted, ref, toRefs} from "vue";
   import {FlexItem, PropertyBoxData} from "../models/models";
 
-  defineProps<{
+  const props = defineProps<{
     data: PropertyBoxData
   }>()
 
-  const containerClass = ref("flex-row");
+  const { data } = toRefs(props);
+
+  const containerClass = ref("");
   const itemClass = ref("");
 
   function setShowboxClasses(item: FlexItem) {
@@ -15,9 +17,14 @@
   }
 
   function clearShowboxClasses() {
-    containerClass.value = "";
-    itemClass.value = "";
+    if (data.value.items) {
+      setShowboxClasses(data.value.items[0]);
+    }
   }
+
+  onMounted(() => {
+    clearShowboxClasses();
+  });
 
   // Idea:
   // Animation with: https://codepen.io/osublake/pen/dMLQJr
@@ -85,6 +92,7 @@
   }
   .tailwind-list li.data > div {
     /*@apply text-lg*/
+    @apply h-1/4;
   }
 
 </style>

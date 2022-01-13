@@ -8,21 +8,34 @@ const flexDirection:PropertyBoxData = {
   type: "container",
   title: "Direction",
   items: [
-    { tailwind: "flex-row", css: "flex-direction: row", classContainer: "flex-row", classItems: "w-1/5" },
-    { tailwind: "flex-row-reverse", css: "flex-direction: row-reverse", classContainer: "flex-row-reverse", classItems: "w-1/5" },
-    { tailwind: "flex-col", css: "flex-direction: column", classContainer: "flex-col", classItems: "w-1/5" },
-    { tailwind: "flex-col-reverse", css: "flex-direction: column-reverse", classContainer: "flex-col-reverse", classItems: "w-1/5" },
+    { tailwind: "flex-row", css: "flex-direction: row", classContainer: "flex-row", classItems: "w-1/5 h-1/3" },
+    { tailwind: "flex-row-reverse", css: "flex-direction: row-reverse", classContainer: "flex-row-reverse", classItems: "w-1/5 h-1/3" },
+    { tailwind: "flex-col", css: "flex-direction: column", classContainer: "flex-col", classItems: "w-1/5 h-1/3" },
+    { tailwind: "flex-col-reverse", css: "flex-direction: column-reverse", classContainer: "flex-col-reverse", classItems: "w-1/5 h-1/3" },
   ]
 }
 const flexWrap:PropertyBoxData = {
   type: "container",
   title: "Wrap",
   items: [
-    { tailwind: "flex-wrap", css: "flex-wrap: wrap;", classContainer: "flex-wrap", classItems: "w-2/5 h-1/2" },
-    { tailwind: "flex-wrap-reverse", css: "flex-wrap: wrap-reverse;", classContainer: "flex-wrap-reverse", classItems: "w-2/5 h-1/2" },
-    { tailwind: "flex-nowrap", css: "flex-wrap: nowrap;", classContainer: "flex-nowrap", classItems: "w-2/5 h-1/2" }
+    { tailwind: "flex-wrap", css: "flex-wrap: wrap;", classContainer: "flex-wrap", classItems: "w-2/5 h-1/3" },
+    { tailwind: "flex-wrap-reverse", css: "flex-wrap: wrap-reverse;", classContainer: "flex-wrap-reverse", classItems: "w-2/5 h-1/3" },
+    { tailwind: "flex-nowrap", css: "flex-wrap: nowrap;", classContainer: "flex-nowrap", classItems: "w-2/5 h-1/3" }
   ]
 }
+const flexFlow:PropertyBoxData = {
+  type: "container",
+  title: "Justify Content",
+  items: [
+    { tailwind: "justify-start", css: "justify-content: flex-start", classContainer: "justify-start", classItems: "w-1/5 h-1/3" },
+    { tailwind: "justify-end", css: "justify-content: flex-end", classContainer: "justify-end", classItems: "w-1/5 h-1/3" },
+    { tailwind: "justify-center", css: "justify-content: center", classContainer: "justify-center", classItems: "w-1/5 h-1/3" },
+    { tailwind: "justify-between", css: "justify-content: space-between", classContainer: "justify-between", classItems: "w-1/5 h-1/3" },
+    { tailwind: "justify-around", css: "justify-content: space-around", classContainer: "justify-around", classItems: "w-1/5 h-1/3" },
+    { tailwind: "justify-evenly", css: "justify-content: space-evenly", classContainer: "justify-evenly", classItems: "w-1/5 h-1/3" },
+  ]
+}
+
 const flexOrder:PropertyBoxData = {
   type: "items",
   title: "Order",
@@ -47,9 +60,7 @@ const flexOrder:PropertyBoxData = {
         <div class="grid grid-cols-2 gap-x-12">
           <property-box :data="flexDirection" />
           <property-box :data="flexWrap" />
-          <property-box :data="flexDirection" />
-          <property-box :data="flexDirection" />
-          <property-box :data="flexDirection" />
+          <property-box :data="flexFlow" />
         </div>
       </div>
       <div>
