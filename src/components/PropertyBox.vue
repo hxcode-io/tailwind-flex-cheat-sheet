@@ -35,9 +35,7 @@ import {onMounted, ref, toRefs} from "vue";
   <div class="property-box" :class="{ 'flex-container' : data.type === 'container', 'flex-items': data.type === 'items'}">
     <div class="title">{{ data.title }}</div>
     <div class="showbox" :class="containerClass">
-      <div class="item" :class="itemClass"><span>1</span></div>
-      <div class="item" :class="itemClass"><span>2</span></div>
-      <div class="item" :class="itemClass"><span>3</span></div>
+      <div v-for="idx in data.count" :key="idx" class="item" :class="itemClass"><span>{{ idx }}</span></div>
     </div>
     <ul class="tailwind-list">
       <li class="flex header">
