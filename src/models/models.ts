@@ -12,5 +12,5 @@ export interface FlexItem {
     css: string,
     classContainer: string,
     classItems: string,
-    oneItemClass: string
+    oneItemClass?: string
 }
