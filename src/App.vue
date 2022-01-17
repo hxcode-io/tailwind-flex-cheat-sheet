@@ -86,9 +86,9 @@ const flexOrder:PropertyBoxData = {
       Tailwind v3 Flex Properties
     </h1>
     <div class="grid grid-cols-2 gap-x-24 mt-10">
-      <div>
-        <h2 class="font-bold">Container</h2>
-        <div class="grid grid-cols-2 gap-x-12">
+      <div class="border">
+        <h2 class="font-bold bg-gray-600 text-white p-2">Container (Properties for the parent)</h2>
+        <div class="grid grid-cols-2 gap-x-12 px-8">
           <property-box :data="flexDirection" />
           <property-box :data="flexWrap" />
           <property-box :data="flexJustify" />
@@ -96,9 +96,9 @@ const flexOrder:PropertyBoxData = {
           <property-box :data="flexAlignContent" />
         </div>
       </div>
-      <div>
-        <h2 class="font-bold">Items</h2>
-        <div class="grid grid-cols-2 gap-x-12">
+      <div class="border">
+        <h2 class="font-bold bg-gray-600 text-white p-2">Items (Properties for the children)</h2>
+        <div class="grid grid-cols-2 gap-x-12 px-8">
           <property-box :data="flexOrder" />
           <property-box :data="flexOrder" />
         </div>
