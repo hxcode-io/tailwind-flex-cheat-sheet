@@ -3,6 +3,7 @@
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import {PropertyBoxData} from './models/models'
 import PropertyBox from "./components/PropertyBox.vue";
+import {ref} from "vue";
 
 const flexDirection:PropertyBoxData = {
   type: "container",
@@ -101,6 +102,31 @@ const flexGrow:PropertyBoxData = {
     { tailwind: "grow-0", css: "flex-grow: 0;", oneItemClass: "grow-0" }
   ]
 }
+const flexShrink:PropertyBoxData = {
+  type: "items",
+  title: "Shrink",
+  count: 5,
+  classContainer: "",
+  classItems: "w-1/3 h-1/3",
+  items: [
+    { tailwind: "shrink", css: "flex-shrink: 1;", oneItemClass: "shrink" },
+    { tailwind: "shrink-0", css: "flex-shrink: 0;", oneItemClass: "shrink-0" }
+  ]
+}
+
+const show = ref(false);
+
+function copyToClipboard(text: string) {
+  console.log("copyToClipboard in App")
+  navigator.clipboard.writeText(text)
+      .then(() => {
+        alert("Copied")
+      })
+      .catch(err => {
+        console.log('Something went wrong', err);
+      });
+}
+
 
 </script>
 
@@ -113,7 +139,7 @@ const flexGrow:PropertyBoxData = {
       <div class="border">
         <h2 class="font-bold bg-gray-600 text-white p-2">Container (Properties for the parent)</h2>
         <div class="grid grid-cols-2 gap-x-12 px-8">
-          <property-box :data="flexDirection" />
+          <property-box :data="flexDirection" @copy="show = true"/>
           <property-box :data="flexWrap" />
           <property-box :data="flexJustify" />
           <property-box :data="flexAlignItems" />
@@ -125,6 +151,7 @@ const flexGrow:PropertyBoxData = {
         <div class="grid grid-cols-2 gap-x-12 px-8">
           <property-box :data="flexOrder" />
           <property-box :data="flexGrow" />
+          <property-box :data="flexShrink" />
         </div>
       </div>
     </div>
@@ -132,6 +159,39 @@ const flexGrow:PropertyBoxData = {
       Inspired by an <a target="blank" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">article from CSS-TRICKS</a>
     </div>
   </div>
+
+
+  <div aria-live="assertive" class="fixed inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start">
+    <div class="w-full flex flex-col items-center space-y-4 sm:items-end">
+      <!-- Notification panel, dynamically insert this into the live region when it needs to be displayed -->
+      <transition enter-active-class="transform ease-out duration-300 transition" enter-from-class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2" enter-to-class="translate-y-0 opacity-100 sm:translate-x-0" leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
+        <div v-if="show" class="max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
+          <div class="p-4">
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+<!--                <CheckCircleIcon class="h-6 w-6 text-green-400" aria-hidden="true" />-->
+              </div>
+              <div class="ml-3 w-0 flex-1 pt-0.5">
+                <p class="text-sm font-medium text-gray-900">
+                  Copied to clipboard!
+                </p>
+                <p class="mt-1 text-sm text-gray-500">
+                  Anyone with a link can now view this file.
+                </p>
+              </div>
+              <div class="ml-4 flex-shrink-0 flex">
+                <button @click="show = false" class="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <span class="sr-only">Close</span>
+<!--                  <XIcon class="h-5 w-5" aria-hidden="true" />-->
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </transition>
+    </div>
+  </div>
+
 </template>
 
 <style>

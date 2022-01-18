@@ -23,6 +23,15 @@ import {onMounted, ref, toRefs} from "vue";
     oneItemClass.value = data.value.classItems + " " + (item.classItems || "") + (item.oneItemClass || "");
   }
 
+  const emit = defineEmits<{
+    (e: 'copy'): void;
+  }>();
+
+  function copyToClipboard(text: string) {
+    console.log("copyToClipboard in Box")
+    emit('copy');
+  }
+
   onMounted(() => {
     selectItem();
   });
@@ -36,7 +45,6 @@ import {onMounted, ref, toRefs} from "vue";
   <div class="property-box" :class="{ 'flex-container' : data.type === 'container', 'flex-items': data.type === 'items'}">
     <div class="title">{{ data.title }}</div>
     <div class="showbox stripes" :class="containerClass">
-<!--      <div v-for="idx in data.count" :key="idx" class="item" :class="itemClass"><span>{{ idx }}</span></div>-->
       <div v-for="idx in data.count" :key="idx" class="item" :class="(data.type === 'items' && idx === 3) ? oneItemClass : itemClass">
         <span>{{ idx }}</span>
       </div>
@@ -47,8 +55,8 @@ import {onMounted, ref, toRefs} from "vue";
         <div class="w-1/2">CSS Property</div>
       </li>
       <li v-for="item in data.items" :key="item" class="flex data" @mouseenter="selectItem(item)" @mouseleave="selectItem()">
-        <div class="w-1/2 tailwindColor">{{ item.tailwind }}</div>
-        <div class="w-1/2 cssColor">{{ item.css }}</div>
+        <div class="w-1/2 tailwindColor cursor-pointer" @click="copyToClipboard(item.tailwind)">{{ item.tailwind }}</div>
+        <div class="w-1/2 cssColor cursor-pointer" @click="copyToClipboard(item.css)">{{ item.css }}</div>
       </li>
     </ul>
   </div>
