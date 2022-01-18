@@ -8,46 +8,54 @@ const flexDirection:PropertyBoxData = {
   type: "container",
   title: "Direction",
   count: 3,
+  classContainer: "",
+  classItems: "w-1/5 h-1/3",
   items: [
-    { tailwind: "flex-row", css: "flex-direction: row", classContainer: "flex-row", classItems: "w-1/5 h-1/3" },
-    { tailwind: "flex-row-reverse", css: "flex-direction: row-reverse", classContainer: "flex-row-reverse", classItems: "w-1/5 h-1/3" },
-    { tailwind: "flex-col", css: "flex-direction: column", classContainer: "flex-col", classItems: "w-1/5 h-1/3" },
-    { tailwind: "flex-col-reverse", css: "flex-direction: column-reverse", classContainer: "flex-col-reverse", classItems: "w-1/5 h-1/3" },
+    { tailwind: "flex-row", css: "flex-direction: row", classContainer: "flex-row" },
+    { tailwind: "flex-row-reverse", css: "flex-direction: row-reverse", classContainer: "flex-row-reverse" },
+    { tailwind: "flex-col", css: "flex-direction: column", classContainer: "flex-col" },
+    { tailwind: "flex-col-reverse", css: "flex-direction: column-reverse", classContainer: "flex-col-reverse" },
   ]
 }
 const flexWrap:PropertyBoxData = {
   type: "container",
   title: "Wrap",
   count: 3,
+  classContainer: "",
+  classItems: "w-2/5 h-1/3",
   items: [
-    { tailwind: "flex-wrap", css: "flex-wrap: wrap;", classContainer: "flex-wrap", classItems: "w-2/5 h-1/3" },
-    { tailwind: "flex-wrap-reverse", css: "flex-wrap: wrap-reverse;", classContainer: "flex-wrap-reverse", classItems: "w-2/5 h-1/3" },
-    { tailwind: "flex-nowrap", css: "flex-wrap: nowrap;", classContainer: "flex-nowrap", classItems: "w-2/5 h-1/3" }
+    { tailwind: "flex-wrap", css: "flex-wrap: wrap;", classContainer: "flex-wrap" },
+    { tailwind: "flex-wrap-reverse", css: "flex-wrap: wrap-reverse;", classContainer: "flex-wrap-reverse" },
+    { tailwind: "flex-nowrap", css: "flex-wrap: nowrap;", classContainer: "flex-nowrap" }
   ]
 }
 const flexJustify:PropertyBoxData = {
   type: "container",
   title: "Justify Content",
   count: 3,
+  classContainer: "",
+  classItems: "w-1/5 h-1/3",
   items: [
-    { tailwind: "justify-start", css: "justify-content: flex-start", classContainer: "justify-start", classItems: "w-1/5 h-1/3" },
-    { tailwind: "justify-end", css: "justify-content: flex-end", classContainer: "justify-end", classItems: "w-1/5 h-1/3" },
-    { tailwind: "justify-center", css: "justify-content: center", classContainer: "justify-center", classItems: "w-1/5 h-1/3" },
-    { tailwind: "justify-between", css: "justify-content: space-between", classContainer: "justify-between", classItems: "w-1/5 h-1/3" },
-    { tailwind: "justify-around", css: "justify-content: space-around", classContainer: "justify-around", classItems: "w-1/5 h-1/3" },
-    { tailwind: "justify-evenly", css: "justify-content: space-evenly", classContainer: "justify-evenly", classItems: "w-1/5 h-1/3" },
+    { tailwind: "justify-start", css: "justify-content: flex-start", classContainer: "justify-start" },
+    { tailwind: "justify-end", css: "justify-content: flex-end", classContainer: "justify-end" },
+    { tailwind: "justify-center", css: "justify-content: center", classContainer: "justify-center" },
+    { tailwind: "justify-between", css: "justify-content: space-between", classContainer: "justify-between" },
+    { tailwind: "justify-around", css: "justify-content: space-around", classContainer: "justify-around" },
+    { tailwind: "justify-evenly", css: "justify-content: space-evenly", classContainer: "justify-evenly" },
   ]
 }
 const flexAlignItems:PropertyBoxData = {
   type: "container",
   title: "Align Items",
   count: 3,
+  classContainer: "",
+  classItems: "w-1/5",
   items: [
-    { tailwind: "items-stretch", css: "align-items: stretch", classContainer: "items-stretch", classItems: "w-1/5" },
-    { tailwind: "items-start", css: "align-items: flex-start", classContainer: "items-start", classItems: "w-1/5 h-1/3" },
-    { tailwind: "items-end", css: "align-items: flex-end", classContainer: "items-end", classItems: "w-1/5 h-1/3" },
-    { tailwind: "items-center", css: "align-items: center", classContainer: "items-center", classItems: "w-1/5 h-1/3" },
-    { tailwind: "items-baseline", css: "align-items: baseline", classContainer: "items-baseline", classItems: "w-1/5 h-1/3" },
+    { tailwind: "items-stretch", css: "align-items: stretch", classContainer: "items-stretch" },
+    { tailwind: "items-start", css: "align-items: flex-start", classContainer: "items-start", classItems: "h-1/3" },
+    { tailwind: "items-end", css: "align-items: flex-end", classContainer: "items-end", classItems: "h-1/3" },
+    { tailwind: "items-center", css: "align-items: center", classContainer: "items-center", classItems: "h-1/3" },
+    { tailwind: "items-baseline", css: "align-items: baseline", classContainer: "items-baseline", classItems: "h-1/3" },
   ]
 }
 
@@ -55,13 +63,15 @@ const flexAlignContent:PropertyBoxData = {
   type: "container",
   title: "Align Content",
   count: 8,
+  classContainer: "flex-row flex-wrap",
+  classItems: "w-1/5 h-1/3",
   items: [
-    { tailwind: "content-center", css: "align-content: center", classContainer: "flex-row flex-wrap content-center", classItems: "w-1/5 h-1/3" },
-    { tailwind: "content-start", css: "align-content: flex-start", classContainer: "flex-row flex-wrap content-start", classItems: "w-1/5 h-1/3" },
-    { tailwind: "content-end", css: "align-content: flex-end", classContainer: "flex-row flex-wrap content-end", classItems: "w-1/5 h-1/3" },
-    { tailwind: "content-between", css: "align-content: space-between", classContainer: "flex-row flex-wrap content-between", classItems: "w-1/5 h-1/3" },
-    { tailwind: "content-around", css: "align-content: space-around", classContainer: "flex-row flex-wrap content-around", classItems: "w-1/5 h-1/3" },
-    { tailwind: "content-evenly", css: "align-content: space-evenly", classContainer: "flex-row flex-wrap content-evenly", classItems: "w-1/5 h-1/3" },
+    { tailwind: "content-center", css: "align-content: center", classContainer: "content-center" },
+    { tailwind: "content-start", css: "align-content: flex-start", classContainer: "content-start" },
+    { tailwind: "content-end", css: "align-content: flex-end", classContainer: "content-end" },
+    { tailwind: "content-between", css: "align-content: space-between", classContainer: "content-between" },
+    { tailwind: "content-around", css: "align-content: space-around", classContainer: "content-around" },
+    { tailwind: "content-evenly", css: "align-content: space-evenly", classContainer: "content-evenly" },
   ]
 }
 
@@ -71,10 +81,24 @@ const flexOrder:PropertyBoxData = {
   type: "items",
   title: "Order",
   count: 5,
+  classContainer: "",
+  classItems: "w-1/5 h-1/3",
   items: [
-    { tailwind: "order-1", css: "flex-direction: row", classContainer: "flex-row", classItems: "w-1/5 h-1/3", oneItemClass: "order-1" },
-    { tailwind: "order-first", css: "flex-direction: row-reverse", classContainer: "flex-row", classItems: "w-1/5 h-1/3" },
-    { tailwind: "order-last", css: "flex-direction: column", classContainer: "flex-row", classItems: "w-1/5 h-1/3" },
+    { tailwind: "order-{1-12}", css: "order: {1-12}", oneItemClass: "order-1" },
+    { tailwind: "-order-{1-12}", css: "order: -{1-12}", oneItemClass: "-order-1" },
+    { tailwind: "order-first", css: "order: -9999", oneItemClass: "order-first" },
+    { tailwind: "order-last", css: "order: 9999", oneItemClass: "order-last" },
+  ]
+}
+const flexGrow:PropertyBoxData = {
+  type: "items",
+  title: "Grow",
+  count: 5,
+  classContainer: "",
+  classItems: "min-40px h-1/3",
+  items: [
+    { tailwind: "grow", css: "flex-grow: 1;", oneItemClass: "grow" },
+    { tailwind: "grow-0", css: "flex-grow: 0;", oneItemClass: "grow-0" }
   ]
 }
 
@@ -100,7 +124,7 @@ const flexOrder:PropertyBoxData = {
         <h2 class="font-bold bg-gray-600 text-white p-2">Items (Properties for the children)</h2>
         <div class="grid grid-cols-2 gap-x-12 px-8">
           <property-box :data="flexOrder" />
-          <property-box :data="flexOrder" />
+          <property-box :data="flexGrow" />
         </div>
       </div>
     </div>
@@ -109,7 +133,6 @@ const flexOrder:PropertyBoxData = {
     </div>
   </div>
 </template>
-
 
 <style>
 a {
@@ -120,5 +143,9 @@ a {
 }
 .cssColor {
   color: #E546AF;
+}
+.min-40px {
+  width: 40px;
+  min-width: 40px;
 }
 </style>

@@ -9,21 +9,22 @@ import {onMounted, ref, toRefs} from "vue";
   const { data } = toRefs(props);
 
   const containerClass = ref("");
+
   const itemClass = ref("");
+  const oneItemClass = ref("");
 
-  function setShowboxClasses(item: FlexItem) {
-    containerClass.value = item.classContainer;
-    itemClass.value = item.classItems;
-  }
-
-  function clearShowboxClasses() {
-    if (data.value.items) {
-      setShowboxClasses(data.value.items[0]);
+  function selectItem(item?: FlexItem) {
+    if (item === undefined) {
+      item = data.value.items[0];
     }
+
+    containerClass.value = data.value.classContainer + " " + (item.classContainer || "");
+    itemClass.value = data.value.classItems + " " + (item.classItems || "");
+    oneItemClass.value = data.value.classItems + " " + (item.classItems || "") + (item.oneItemClass || "");
   }
 
   onMounted(() => {
-    clearShowboxClasses();
+    selectItem();
   });
 
   // Idea:
@@ -35,14 +36,17 @@ import {onMounted, ref, toRefs} from "vue";
   <div class="property-box" :class="{ 'flex-container' : data.type === 'container', 'flex-items': data.type === 'items'}">
     <div class="title">{{ data.title }}</div>
     <div class="showbox stripes" :class="containerClass">
-      <div v-for="idx in data.count" :key="idx" class="item" :class="itemClass"><span>{{ idx }}</span></div>
+<!--      <div v-for="idx in data.count" :key="idx" class="item" :class="itemClass"><span>{{ idx }}</span></div>-->
+      <div v-for="idx in data.count" :key="idx" class="item" :class="(data.type === 'items' && idx === 3) ? oneItemClass : itemClass">
+        <span>{{ idx }}</span>
+      </div>
     </div>
     <ul class="tailwind-list">
       <li class="flex header">
         <div class="w-1/2">Tailwind Class</div>
         <div class="w-1/2">CSS Property</div>
       </li>
-      <li v-for="item in data.items" :key="item" class="flex data" @mouseenter="setShowboxClasses(item)" @mouseleave="clearShowboxClasses">
+      <li v-for="item in data.items" :key="item" class="flex data" @mouseenter="selectItem(item)" @mouseleave="selectItem()">
         <div class="w-1/2 tailwindColor">{{ item.tailwind }}</div>
         <div class="w-1/2 cssColor">{{ item.css }}</div>
       </li>
