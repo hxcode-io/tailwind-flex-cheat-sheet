@@ -24,13 +24,8 @@ import {onMounted, ref, toRefs} from "vue";
   }
 
   const emit = defineEmits<{
-    (e: 'copy'): void;
+    (e: 'copy', text: string): void;
   }>();
-
-  function copyToClipboard(text: string) {
-    console.log("copyToClipboard in Box")
-    emit('copy');
-  }
 
   onMounted(() => {
     selectItem();
@@ -55,8 +50,8 @@ import {onMounted, ref, toRefs} from "vue";
         <div class="w-1/2">CSS Property</div>
       </li>
       <li v-for="item in data.items" :key="item" class="flex data" @mouseenter="selectItem(item)" @mouseleave="selectItem()">
-        <div class="w-1/2 tailwindColor cursor-pointer" @click="copyToClipboard(item.tailwind)">{{ item.tailwind }}</div>
-        <div class="w-1/2 cssColor cursor-pointer" @click="copyToClipboard(item.css)">{{ item.css }}</div>
+        <div class="w-1/2 tailwindColor cursor-pointer" @click="emit('copy', item.tailwind)">{{ item.tailwind }}</div>
+        <div class="w-1/2 cssColor cursor-pointer" @click="emit('copy', item.css)">{{ item.css }}</div>
       </li>
     </ul>
   </div>

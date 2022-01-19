@@ -3,6 +3,7 @@
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import {PropertyBoxData} from './models/models'
 import PropertyBox from "./components/PropertyBox.vue";
+import { ClipboardCheckIcon } from '@heroicons/vue/outline';
 import {ref} from "vue";
 
 const flexDirection:PropertyBoxData = {
@@ -115,19 +116,26 @@ const flexShrink:PropertyBoxData = {
 }
 
 const show = ref(false);
+const copiedText = ref("");
+const timeOut = ref(-1);
 
 function copyToClipboard(text: string) {
-  console.log("copyToClipboard in App")
   navigator.clipboard.writeText(text)
       .then(() => {
-        alert("Copied")
+        copiedText.value = text;
+        show.value = true;
+        if (timeOut.value != -1) {
+          clearTimeout(timeOut.value);
+        }
+        timeOut.value = setTimeout(() => {
+          show.value = false;
+          timeOut.value = -1;
+        }, 3000);
       })
       .catch(err => {
         console.log('Something went wrong', err);
       });
 }
-
-
 </script>
 
 <template>
@@ -139,19 +147,19 @@ function copyToClipboard(text: string) {
       <div class="border">
         <h2 class="font-bold bg-gray-600 text-white p-2">Container (Properties for the parent)</h2>
         <div class="grid grid-cols-2 gap-x-12 px-8">
-          <property-box :data="flexDirection" @copy="show = true"/>
-          <property-box :data="flexWrap" />
-          <property-box :data="flexJustify" />
-          <property-box :data="flexAlignItems" />
-          <property-box :data="flexAlignContent" />
+          <property-box :data="flexDirection" @copy="copyToClipboard"/>
+          <property-box :data="flexWrap" @copy="copyToClipboard" />
+          <property-box :data="flexJustify" @copy="copyToClipboard" />
+          <property-box :data="flexAlignItems" @copy="copyToClipboard" />
+          <property-box :data="flexAlignContent" @copy="copyToClipboard" />
         </div>
       </div>
       <div class="border">
         <h2 class="font-bold bg-gray-600 text-white p-2">Items (Properties for the children)</h2>
         <div class="grid grid-cols-2 gap-x-12 px-8">
-          <property-box :data="flexOrder" />
-          <property-box :data="flexGrow" />
-          <property-box :data="flexShrink" />
+          <property-box :data="flexOrder" @copy="copyToClipboard" />
+          <property-box :data="flexGrow" @copy="copyToClipboard" />
+          <property-box :data="flexShrink" @copy="copyToClipboard" />
         </div>
       </div>
     </div>
@@ -169,21 +177,15 @@ function copyToClipboard(text: string) {
           <div class="p-4">
             <div class="flex items-start">
               <div class="flex-shrink-0">
-<!--                <CheckCircleIcon class="h-6 w-6 text-green-400" aria-hidden="true" />-->
+                <ClipboardCheckIcon class="h-6 w-6 text-green-400" aria-hidden="true" />
               </div>
               <div class="ml-3 w-0 flex-1 pt-0.5">
                 <p class="text-sm font-medium text-gray-900">
                   Copied to clipboard!
                 </p>
                 <p class="mt-1 text-sm text-gray-500">
-                  Anyone with a link can now view this file.
+                  {{ copiedText }}
                 </p>
-              </div>
-              <div class="ml-4 flex-shrink-0 flex">
-                <button @click="show = false" class="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  <span class="sr-only">Close</span>
-<!--                  <XIcon class="h-5 w-5" aria-hidden="true" />-->
-                </button>
               </div>
             </div>
           </div>
