@@ -139,14 +139,21 @@ function copyToClipboard(text: string) {
 </script>
 
 <template>
-  <div class="m-14">
-    <h1 class="text-2xl font-bold">
-      Tailwind v3 Flex Properties
-    </h1>
-    <div class="grid grid-cols-2 gap-x-24 mt-10">
-      <div class="border">
-        <h2 class="font-bold bg-gray-600 text-white p-2">Container (Properties for the parent)</h2>
-        <div class="grid grid-cols-2 gap-x-12 px-8">
+  <div class="mx-14 my-8">
+<!--    <div class="text-center text-gray-400">Cheatsheet</div>-->
+    <h1 class="text-4xl text-center">Flex Properties in TailwindCSS</h1>
+    <div class="text-center text-gray-400 mt-2">
+      - Move your mouse over the property lines and click to copy -
+    </div>
+    <div class="flex justify-center text-gray-300 mt-2">
+      <svg style="width:48px;height:48px" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M11,1.07C7.05,1.56 4,4.92 4,9H11M4,15A8,8 0 0,0 12,23A8,8 0 0,0 20,15V11H4M13,1.07V9H20C20,4.92 16.94,1.56 13,1.07Z" />
+      </svg>
+    </div>
+    <div class="grid grid-cols-2 gap-x-32 -mt-10">
+      <div>
+        <h2 class="text-gray-400 text-center border-b">Properties for the flex container</h2>
+        <div class="grid grid-cols-2 gap-x-6">
           <property-box :data="flexDirection" @copy="copyToClipboard"/>
           <property-box :data="flexWrap" @copy="copyToClipboard" />
           <property-box :data="flexJustify" @copy="copyToClipboard" />
@@ -154,18 +161,18 @@ function copyToClipboard(text: string) {
           <property-box :data="flexAlignContent" @copy="copyToClipboard" />
         </div>
       </div>
-      <div class="border">
-        <h2 class="font-bold bg-gray-600 text-white p-2">Items (Properties for the children)</h2>
-        <div class="grid grid-cols-2 gap-x-12 px-8">
+      <div>
+        <h2 class="text-gray-400 text-center border-b">Properties for the flex children</h2>
+        <div class="grid grid-cols-2 gap-x-6">
           <property-box :data="flexOrder" @copy="copyToClipboard" />
           <property-box :data="flexGrow" @copy="copyToClipboard" />
           <property-box :data="flexShrink" @copy="copyToClipboard" />
         </div>
       </div>
     </div>
-    <div class="mt-20">
-      Inspired by an <a target="blank" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">article from CSS-TRICKS</a>
-    </div>
+<!--    <div class="mt-20">-->
+<!--      Inspired by an <a target="blank" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">article from CSS-TRICKS</a>-->
+<!--    </div>-->
   </div>
 
 
@@ -173,11 +180,11 @@ function copyToClipboard(text: string) {
     <div class="w-full flex flex-col items-center space-y-4 sm:items-end">
       <!-- Notification panel, dynamically insert this into the live region when it needs to be displayed -->
       <transition enter-active-class="transform ease-out duration-300 transition" enter-from-class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2" enter-to-class="translate-y-0 opacity-100 sm:translate-x-0" leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
-        <div v-if="show" class="max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
+        <div v-if="show" class="bg-green-100 max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
           <div class="p-4">
             <div class="flex items-start">
               <div class="flex-shrink-0">
-                <ClipboardCheckIcon class="h-6 w-6 text-green-400" aria-hidden="true" />
+                <ClipboardCheckIcon class="h-6 w-6 text-green-800" aria-hidden="true" />
               </div>
               <div class="ml-3 w-0 flex-1 pt-0.5">
                 <p class="text-sm font-medium text-gray-900">
