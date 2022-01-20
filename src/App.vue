@@ -9,6 +9,7 @@ import {ref} from "vue";
 const flexDirection:PropertyBoxData = {
   type: "container",
   title: "Direction",
+  description: "This establishes the main-axis.",
   count: 3,
   classContainer: "",
   classItems: "w-1/5 h-1/3",
@@ -22,6 +23,7 @@ const flexDirection:PropertyBoxData = {
 const flexWrap:PropertyBoxData = {
   type: "container",
   title: "Wrap",
+  description: "By default, flex items will all try to fit onto one line. You can change that.",
   count: 3,
   classContainer: "",
   classItems: "w-2/5 h-1/3",
@@ -34,6 +36,7 @@ const flexWrap:PropertyBoxData = {
 const flexJustify:PropertyBoxData = {
   type: "container",
   title: "Justify Content",
+  description: "This defines the alignment along the main axis. ",
   count: 3,
   classContainer: "",
   classItems: "w-1/5 h-1/3",
@@ -49,6 +52,7 @@ const flexJustify:PropertyBoxData = {
 const flexAlignItems:PropertyBoxData = {
   type: "container",
   title: "Align Items",
+  description: "This defines the default behavior for how flex items are laid out along the cross axis on the current line.",
   count: 3,
   classContainer: "",
   classItems: "w-1/5",
@@ -64,6 +68,7 @@ const flexAlignItems:PropertyBoxData = {
 const flexAlignContent:PropertyBoxData = {
   type: "container",
   title: "Align Content",
+  description: "This aligns a flex container’s lines within when there is extra space in the cross-axis.",
   count: 8,
   classContainer: "flex-row flex-wrap",
   classItems: "w-1/5 h-1/3",
@@ -82,6 +87,7 @@ const flexAlignContent:PropertyBoxData = {
 const flexOrder:PropertyBoxData = {
   type: "items",
   title: "Order",
+  description: "By default, flex items are laid out in the source order.",
   count: 5,
   classContainer: "",
   classItems: "w-1/5 h-1/3",
@@ -95,6 +101,7 @@ const flexOrder:PropertyBoxData = {
 const flexGrow:PropertyBoxData = {
   type: "items",
   title: "Grow",
+  description: "This defines the ability for a flex item to grow if necessary.",
   count: 5,
   classContainer: "",
   classItems: "min-40px h-1/3",
@@ -106,6 +113,7 @@ const flexGrow:PropertyBoxData = {
 const flexShrink:PropertyBoxData = {
   type: "items",
   title: "Shrink",
+  description: "This defines the ability for a flex item to shrink if necessary.",
   count: 5,
   classContainer: "",
   classItems: "w-1/3 h-1/3",
@@ -142,7 +150,7 @@ function copyToClipboard(text: string) {
   <div class="mx-14 my-8">
 <!--    <div class="text-center text-gray-400">Cheatsheet</div>-->
     <h1 class="text-4xl text-center">Flex Properties in TailwindCSS</h1>
-    <div class="text-center text-gray-400 mt-2">
+    <div class="text-center text-gray-500 mt-2">
       - Move your mouse over the property lines and click to copy -
     </div>
     <div class="flex justify-center text-gray-300 mt-2">
@@ -170,9 +178,9 @@ function copyToClipboard(text: string) {
         </div>
       </div>
     </div>
-<!--    <div class="mt-20">-->
-<!--      Inspired by an <a target="blank" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">article from CSS-TRICKS</a>-->
-<!--    </div>-->
+    <div class="mt-20">
+      Inspired by an <a target="blank" class="text-blue-700" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">article from CSS-TRICKS</a>.
+    </div>
   </div>
 
 
@@ -180,17 +188,17 @@ function copyToClipboard(text: string) {
     <div class="w-full flex flex-col items-center space-y-4 sm:items-end">
       <!-- Notification panel, dynamically insert this into the live region when it needs to be displayed -->
       <transition enter-active-class="transform ease-out duration-300 transition" enter-from-class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2" enter-to-class="translate-y-0 opacity-100 sm:translate-x-0" leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
-        <div v-if="show" class="bg-green-100 max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
+        <div v-if="show" class="bg-green-500 max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
           <div class="p-4">
             <div class="flex items-start">
               <div class="flex-shrink-0">
-                <ClipboardCheckIcon class="h-6 w-6 text-green-800" aria-hidden="true" />
+                <ClipboardCheckIcon class="h-16 w-16 text-white" aria-hidden="true" />
               </div>
-              <div class="ml-3 w-0 flex-1 pt-0.5">
-                <p class="text-sm font-medium text-gray-900">
+              <div class="ml-3 w-0 flex-1 px-4 py-2">
+                <p class="text-sm font-medium text-white">
                   Copied to clipboard!
                 </p>
-                <p class="mt-1 text-sm text-gray-500">
+                <p class="mt-1 text-sm text-green-200">
                   {{ copiedText }}
                 </p>
               </div>

@@ -39,6 +39,7 @@ import {onMounted, ref, toRefs} from "vue";
 <template>
   <div class="property-box" :class="{ 'flex-container' : data.type === 'container', 'flex-items': data.type === 'items'}">
     <div class="title">{{ data.title }}</div>
+    <div class="description">{{ data.description }}</div>
     <div class="showbox stripes" :class="containerClass">
       <div v-for="idx in data.count" :key="idx" class="item" :class="(data.type === 'items' && idx === 3) ? oneItemClass : itemClass">
         <span>{{ idx }}</span>
@@ -49,7 +50,7 @@ import {onMounted, ref, toRefs} from "vue";
         <div class="w-1/2">Tailwind Class</div>
         <div class="w-1/2">CSS Property</div>
       </li>
-      <li v-for="item in data.items" :key="item" class="flex data" @mouseenter="selectItem(item)" @mouseleave="selectItem()">
+      <li v-for="item in data.items" :key="item.tailwind" class="flex data" @mouseenter="selectItem(item)" @mouseleave="selectItem()">
         <div class="w-1/2 tailwindColor cursor-pointer" @click="emit('copy', item.tailwind)">{{ item.tailwind }}</div>
         <div class="w-1/2 cssColor cursor-pointer" @click="emit('copy', item.css)">{{ item.css }}</div>
       </li>
@@ -80,7 +81,10 @@ import {onMounted, ref, toRefs} from "vue";
       }
     }
     .title {
-      @apply mb-2 text-lg font-bold text-black;
+      @apply text-lg font-bold text-black;
+    }
+    .description {
+      @apply mb-2 text-gray-400 text-sm;
     }
     .showbox {
       @apply flex bg-white gap-1 px-4 py-2 rounded-lg mb-4;

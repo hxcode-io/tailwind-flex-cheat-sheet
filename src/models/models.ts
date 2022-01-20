@@ -3,6 +3,7 @@
 export interface PropertyBoxData {
     type: "container" | "items",
     title: string,
+    description?: string,
     count: number,
     classContainer: string,
     classItems: string,
