@@ -7,11 +7,13 @@ export interface PropertyBoxData {
     count: number,
     classContainer: string,
     classItems: string,
+    disableOrderOn3: boolean,
     items: Array<FlexItem>
 }
 
 export interface FlexItem {
     tailwind: string,
+    tailwindDescription?: string,
     css: string,
     classContainer?: string,
     classItems?: string,

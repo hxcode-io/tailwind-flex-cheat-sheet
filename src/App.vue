@@ -13,6 +13,7 @@ const flexDirection:PropertyBoxData = {
   count: 3,
   classContainer: "",
   classItems: "w-1/5 h-1/3",
+  disableOrderOn3: false,
   items: [
     { tailwind: "flex-row", css: "flex-direction: row", classContainer: "flex-row" },
     { tailwind: "flex-row-reverse", css: "flex-direction: row-reverse", classContainer: "flex-row-reverse" },
@@ -27,6 +28,7 @@ const flexWrap:PropertyBoxData = {
   count: 3,
   classContainer: "",
   classItems: "w-2/5 h-1/3",
+  disableOrderOn3: false,
   items: [
     { tailwind: "flex-wrap", css: "flex-wrap: wrap;", classContainer: "flex-wrap" },
     { tailwind: "flex-wrap-reverse", css: "flex-wrap: wrap-reverse;", classContainer: "flex-wrap-reverse" },
@@ -40,6 +42,7 @@ const flexJustify:PropertyBoxData = {
   count: 3,
   classContainer: "",
   classItems: "w-1/5 h-1/3",
+  disableOrderOn3: false,
   items: [
     { tailwind: "justify-start", css: "justify-content: flex-start", classContainer: "justify-start" },
     { tailwind: "justify-end", css: "justify-content: flex-end", classContainer: "justify-end" },
@@ -56,6 +59,7 @@ const flexAlignItems:PropertyBoxData = {
   count: 3,
   classContainer: "",
   classItems: "w-1/5",
+  disableOrderOn3: false,
   items: [
     { tailwind: "items-stretch", css: "align-items: stretch", classContainer: "items-stretch" },
     { tailwind: "items-start", css: "align-items: flex-start", classContainer: "items-start", classItems: "h-1/3" },
@@ -72,6 +76,7 @@ const flexAlignContent:PropertyBoxData = {
   count: 8,
   classContainer: "flex-row flex-wrap",
   classItems: "w-1/5 h-1/3",
+  disableOrderOn3: false,
   items: [
     { tailwind: "content-center", css: "align-content: center", classContainer: "content-center" },
     { tailwind: "content-start", css: "align-content: flex-start", classContainer: "content-start" },
@@ -90,10 +95,15 @@ const flexOrder:PropertyBoxData = {
   description: "By default, flex items are laid out in the source order.",
   count: 5,
   classContainer: "",
-  classItems: "w-1/5 h-1/3",
+  classItems: "w-1/5 h-1/3 order-1",
+  disableOrderOn3: true,
   items: [
-    { tailwind: "order-{1-12}", css: "order: {1-12}", oneItemClass: "order-1" },
-    { tailwind: "-order-{1-12}", css: "order: -{1-12}", oneItemClass: "-order-1" },
+    { tailwind: "order-1", css: "order: 1", oneItemClass: "-order-1" },
+    { tailwind: "order-2", css: "order: 2", oneItemClass: "order-1" },
+    { tailwind: "order-3", tailwindDescription: "(until 12)", css: "order: 3", oneItemClass: "order-2" },
+    { tailwind: "-order-1", css: "order: -1", oneItemClass: "-order-1" },
+    { tailwind: "-order-2", css: "order: -2", oneItemClass: "-order-2" },
+    { tailwind: "-order-3", tailwindDescription: "(until 12)", css: "order: -3", oneItemClass: "-order-3" },
     { tailwind: "order-first", css: "order: -9999", oneItemClass: "order-first" },
     { tailwind: "order-last", css: "order: 9999", oneItemClass: "order-last" },
   ]
@@ -105,6 +115,7 @@ const flexGrow:PropertyBoxData = {
   count: 5,
   classContainer: "",
   classItems: "min-40px h-1/3",
+  disableOrderOn3: false,
   items: [
     { tailwind: "grow", css: "flex-grow: 1;", oneItemClass: "grow" },
     { tailwind: "grow-0", css: "flex-grow: 0;", oneItemClass: "grow-0" }
@@ -117,6 +128,7 @@ const flexShrink:PropertyBoxData = {
   count: 5,
   classContainer: "",
   classItems: "w-1/3 h-1/3",
+  disableOrderOn3: false,
   items: [
     { tailwind: "shrink", css: "flex-shrink: 1;", oneItemClass: "shrink" },
     { tailwind: "shrink-0", css: "flex-shrink: 0;", oneItemClass: "shrink-0" }
@@ -188,7 +200,7 @@ function copyToClipboard(text: string) {
     <div class="w-full flex flex-col items-center space-y-4 sm:items-end">
       <!-- Notification panel, dynamically insert this into the live region when it needs to be displayed -->
       <transition enter-active-class="transform ease-out duration-300 transition" enter-from-class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2" enter-to-class="translate-y-0 opacity-100 sm:translate-x-0" leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
-        <div v-if="show" class="bg-green-500 max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
+        <div v-if="show" class="bg-green-500 max-w-sm w-full shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
           <div class="p-4">
             <div class="flex items-start">
               <div class="flex-shrink-0">

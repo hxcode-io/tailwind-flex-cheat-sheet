@@ -41,7 +41,8 @@ import {onMounted, ref, toRefs} from "vue";
     <div class="title">{{ data.title }}</div>
     <div class="description">{{ data.description }}</div>
     <div class="showbox stripes" :class="containerClass">
-      <div v-for="idx in data.count" :key="idx" class="item" :class="(data.type === 'items' && idx === 3) ? oneItemClass : itemClass">
+      <div v-for="idx in data.count" :key="idx" class="item" :class="(data.type === 'items' && idx === 3) ? oneItemClass : itemClass"
+           :style="(data.disableOrderOn3 && idx === 3) ? '' : ('order: ' + idx)">
         <span>{{ idx }}</span>
       </div>
     </div>
@@ -51,7 +52,10 @@ import {onMounted, ref, toRefs} from "vue";
         <div class="w-1/2">CSS Property</div>
       </li>
       <li v-for="item in data.items" :key="item.tailwind" class="flex data" @mouseenter="selectItem(item)" @mouseleave="selectItem()">
-        <div class="w-1/2 tailwindColor cursor-pointer" @click="emit('copy', item.tailwind)">{{ item.tailwind }}</div>
+        <div class="w-1/2 tailwindColor cursor-pointer" @click="emit('copy', item.tailwind)">
+          {{ item.tailwind }}
+          <span v-if="item.tailwindDescription" class="text-gray-400 ml-4">{{ item.tailwindDescription }}</span>
+        </div>
         <div class="w-1/2 cssColor cursor-pointer" @click="emit('copy', item.css)">{{ item.css }}</div>
       </li>
     </ul>
