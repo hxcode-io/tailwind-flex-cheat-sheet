@@ -160,20 +160,19 @@ function copyToClipboard(text: string) {
 
 <template>
   <div class="mx-14 my-8">
-<!--    <div class="text-center text-gray-400">Cheatsheet</div>-->
     <h1 class="text-4xl text-center">Flex Properties in TailwindCSS</h1>
     <div class="text-center text-gray-500 mt-2">
       - Move your mouse over the property lines and click to copy -
     </div>
-    <div class="flex justify-center text-gray-300 mt-2">
+    <div class="hidden lg:flex justify-center text-gray-300 mt-2">
       <svg style="width:48px;height:48px" viewBox="0 0 24 24">
         <path fill="currentColor" d="M11,1.07C7.05,1.56 4,4.92 4,9H11M4,15A8,8 0 0,0 12,23A8,8 0 0,0 20,15V11H4M13,1.07V9H20C20,4.92 16.94,1.56 13,1.07Z" />
       </svg>
     </div>
-    <div class="grid grid-cols-2 gap-x-32 -mt-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-32 mt-4 lg:-mt-10">
       <div>
         <h2 class="text-gray-400 text-center border-b">Properties for the flex container</h2>
-        <div class="grid grid-cols-2 gap-x-6">
+        <div class="grid grid-cols-1 2xl:grid-cols-2 gap-x-6">
           <property-box :data="flexDirection" @copy="copyToClipboard"/>
           <property-box :data="flexWrap" @copy="copyToClipboard" />
           <property-box :data="flexJustify" @copy="copyToClipboard" />
@@ -183,7 +182,7 @@ function copyToClipboard(text: string) {
       </div>
       <div>
         <h2 class="text-gray-400 text-center border-b">Properties for the flex children</h2>
-        <div class="grid grid-cols-2 gap-x-6">
+        <div class="grid grid-cols-1 2xl:grid-cols-2 gap-x-6">
           <property-box :data="flexOrder" @copy="copyToClipboard" />
           <property-box :data="flexGrow" @copy="copyToClipboard" />
           <property-box :data="flexShrink" @copy="copyToClipboard" />
