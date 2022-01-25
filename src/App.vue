@@ -159,7 +159,7 @@ function copyToClipboard(text: string) {
 </script>
 
 <template>
-  <div class="mx-14 my-8">
+  <div class="mx-6 lg:mx-14 my-8">
     <h1 class="text-4xl text-center">Flex Properties in TailwindCSS</h1>
     <div class="text-center text-gray-500 mt-2">
       - Move your mouse over the property lines and click to copy -
