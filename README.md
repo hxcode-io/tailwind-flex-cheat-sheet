@@ -1,4 +1,4 @@
-See it online: https://flex-tailwind-cheat.netlify.app/
+See it online: [https://flex-tailwind-cheat.netlify.app/](https://tailwindcards.com/tools/cheat_sheet)
 
 # Vue 3 + Typescript + Vite
 
